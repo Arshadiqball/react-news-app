@@ -1,0 +1,20 @@
+{
+  "settings": {
+    "title": "Settings & Preferences",
+    "theme": "Theme",
+    "selectTheme": "Select Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "spanish": "Spanish",
+    "save": "Save",
+    "sources": "Preferred Sources",
+    "authors": "Preferred Authors",
+    "categories": "Preferred Categories",
+    "selectAuthors": "Select Authors",
+    "selectCategories": "Select Categories",
+    "selectSources": "Select Sources"
+  }
+}
