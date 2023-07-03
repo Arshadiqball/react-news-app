@@ -23,7 +23,6 @@ function AppRouter({
       const settingsData = localStorage.getItem("settings");
       const { theme, language } = settingsData ? JSON.parse(settingsData) : {};
     
-
       document.body.classList.toggle("dark-theme", theme === "dark")
       document.body.classList.toggle("light-theme", theme !== "dark")
       setIsDarkMode(theme === "dark")
@@ -31,7 +30,6 @@ function AppRouter({
       i18n.changeLanguage(language)
     }
     return () => {
-      localStorage.setItem("apisource", process.env.REACT_APP_API_SOURCE)
       if (localStorage.getItem("settings") != null) {
         checkAuth()
       }

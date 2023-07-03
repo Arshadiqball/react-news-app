@@ -14,7 +14,7 @@ export async function registers(data, navigate) {
 
       toast.success(message)
       navigate("/")
-    }else{
+    } else {
       toast.error(message)
     }
   } catch (error) {

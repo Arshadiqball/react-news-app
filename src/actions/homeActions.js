@@ -1,7 +1,6 @@
 import axios from "./../axios"
 import { toast } from "react-toastify"
 
-
 const API_KEY_NEWSAPI_SOURCE = process.env.REACT_APP_NEWS_API_SOURCE
 const API_KEY_NEWSAPI = process.env.REACT_APP_NEWS_API_TOKEN
 const API_KEY_NYT = process.env.REACT_APP_NEW_YORK_API_TOKEN
@@ -15,7 +14,7 @@ export const fetchSources = async (apiSource, dispatch) => {
       const response = await axios.get(`${API_KEY_NEWSAPI_SOURCE}`, {
         params: {
           apiKey: API_KEY_NEWSAPI,
-          language: "en"
+          language: "en",
         },
       })
       const filteredSources = response.sources.map((keyword) => ({
@@ -127,11 +126,10 @@ export const fetchAuthors = async (apiSource, dispatch) => {
         const filteredArticles = [
           ...new Set(
             data.response.docs.flatMap((result) =>
-              result.byline.person
-                .map((keyword) => ({
-                  value: keyword.firstname,
-                  label: keyword.firstname,
-                }))
+              result.byline.person.map((keyword) => ({
+                value: keyword.firstname,
+                label: keyword.firstname,
+              }))
             )
           ),
         ]
@@ -174,7 +172,7 @@ export const fetchArticles = async (
   setIsLoading(true)
   const searchParams = new URLSearchParams()
   const settingsData = localStorage.getItem("settings")
-  const apisource = localStorage.getItem("apisource") ?? 'newsapi';
+  const apisource = localStorage.getItem("apisource") ?? "newsapi"
   const { sources, categories, authors } = settingsData
     ? JSON.parse(settingsData)
     : {}
@@ -187,7 +185,7 @@ export const fetchArticles = async (
       params.apiKey = API_KEY_NEWSAPI
       params.language = "en"
     }
-    
+
     if (!searchKeyword && !preferredSources && !filterCategory && !filterDate) {
       if (authors || categories || sources) {
         if (
@@ -200,20 +198,20 @@ export const fetchArticles = async (
           }
           if (categories?.length > 0) {
             if (apisource === "nyt") {
-              let transformedData;
-              if (typeof categories === 'string') {
+              let transformedData
+              if (typeof categories === "string") {
                 transformedData = categories
-              }else{
+              } else {
                 let values = categories.map((item) => item.value)
                 transformedData = values.join(",")
                 params.category = transformedData
               }
               searchParams.append("fq", `news_desk:(${transformedData})`)
             } else {
-              let transformedData;
-              if (typeof categories === 'string') {
+              let transformedData
+              if (typeof categories === "string") {
                 transformedData = categories
-              }else{
+              } else {
                 transformedData = categories[0].value
               }
               params.category = transformedData
@@ -221,10 +219,10 @@ export const fetchArticles = async (
           }
           if (sources?.length > 0) {
             if (apisource === "nyt") {
-              let transformedData;
-              if (typeof sources === 'string') {
+              let transformedData
+              if (typeof sources === "string") {
                 transformedData = sources
-              }else{
+              } else {
                 let values = sources.map((item) => item.value)
                 transformedData = values.join(",")
                 params.country = transformedData
@@ -278,20 +276,22 @@ export const fetchArticles = async (
 
         const response = await fetch(url)
         const data = await response.json()
-        
+
         const filteredArticles = data.response.docs.filter((article) => {
           if (Array.isArray(authors)) {
             return authors.some(
               (authorObj) =>
                 article?.byline?.person[0]?.firstname === authorObj.value
-            );
-          } else if (authors.includes(',')) {
-            return authors.split(',').some(
-              (authorObj) =>
-                article?.byline?.person[0]?.firstname === authorObj
-            );
+            )
+          } else if (authors.includes(",")) {
+            return authors
+              .split(",")
+              .some(
+                (authorObj) =>
+                  article?.byline?.person[0]?.firstname === authorObj
+              )
           } else {
-            return article?.byline?.person[0]?.firstname === authors;
+            return article?.byline?.person[0]?.firstname === authors
           }
         })
 
@@ -330,26 +330,22 @@ export const fetchArticles = async (
         })
       }
     } else if (apisource === "newsapi") {
-
       if (params.q === "*") {
         delete params.q
 
         const response = await axios.get(url, { params })
 
         const filteredArticles = response.articles.filter((article) => {
-
           if (Array.isArray(authors)) {
             return authors.some(
-              (authorObj) =>
-                article.author === authorObj.value
-            );
-          } else if (authors.includes(',')) {
-            return authors.split(',').some(
-              (authorObj) =>
-                article?.author === authorObj
-            );
+              (authorObj) => article.author === authorObj.value
+            )
+          } else if (authors.includes(",")) {
+            return authors
+              .split(",")
+              .some((authorObj) => article?.author === authorObj)
           } else {
-            return article?.author === authors;
+            return article?.author === authors
           }
         })
 

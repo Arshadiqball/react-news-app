@@ -11,7 +11,7 @@ export const authReducer = (state, action) => {
     case "LOGIN":
       return {
         ...state,
-        user: action.payload, // or however you need to update the state
+        user: action.payload,
       }
     case "REGISTER_SUCCESS":
       return {

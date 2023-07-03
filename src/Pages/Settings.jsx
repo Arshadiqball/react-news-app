@@ -23,9 +23,11 @@ const Settings = ({ isDarkMode, toggleDarkMode, setIsLoading, isLoading }) => {
   const [selectedOptionsCategory, setSelectedOptionsCategory] = useState([])
   const [selectedOptionsAuthor, setSelectedOptionsAuthor] = useState([])
 
-  const settingsData = localStorage.getItem("settings");
-  const apisource = localStorage.getItem("apisource") ?? 'newsapi';
-  const { sources, categories, authors } = settingsData ? JSON.parse(settingsData) : {};
+  const settingsData = localStorage.getItem("settings")
+  const apisource = localStorage.getItem("apisource") ?? "newsapi"
+  const { sources, categories, authors } = settingsData
+    ? JSON.parse(settingsData)
+    : {}
 
   const { t, i18n } = useTranslation()
   const [state, dispatch] = useReducer(settingsReducer, { settings: {} })
@@ -52,41 +54,41 @@ const Settings = ({ isDarkMode, toggleDarkMode, setIsLoading, isLoading }) => {
       fetchData()
       fetchSettings(dispatch)
       let dataSource, dataCategory, source, category, author, dataAuthor
-      if(sources != null){
-        if (sources.indexOf(',') !== -1) {
+      if (sources != null) {
+        if (sources.indexOf(",") !== -1) {
           dataSource = sources.split(",")
           source = dataSource.map((value) => ({ label: value, value }))
         } else {
           if (Array.isArray(sources)) {
-            source = sources;
-          }else{
-            source = [{ value: sources, label: sources }];
+            source = sources
+          } else {
+            source = [{ value: sources, label: sources }]
           }
         }
         setSelectedOptionsSource(source)
       }
-      if(categories != null){
-        if (categories.indexOf(',') !== -1) {
+      if (categories != null) {
+        if (categories.indexOf(",") !== -1) {
           dataCategory = categories.split(",")
           category = dataCategory.map((value) => ({ label: value, value }))
         } else {
           if (Array.isArray(categories)) {
-            category = categories;
-          }else{
-            category = [{ value: categories, label: categories }];
+            category = categories
+          } else {
+            category = [{ value: categories, label: categories }]
           }
         }
         setSelectedOptionsCategory(category)
       }
-      if(authors != null){
-        if (authors.indexOf(',') !== -1) {
+      if (authors != null) {
+        if (authors.indexOf(",") !== -1) {
           dataAuthor = authors.split(",")
           author = dataAuthor.map((value) => ({ label: value, value }))
         } else {
           if (Array.isArray(authors)) {
-            author = authors;
-          }else{
-            author = [{ value: authors, label: authors }];
+            author = authors
+          } else {
+            author = [{ value: authors, label: authors }]
           }
         }
         setSelectedOptionsAuthor(author)
@@ -179,7 +181,6 @@ const Settings = ({ isDarkMode, toggleDarkMode, setIsLoading, isLoading }) => {
       <hr />
       <Form onSubmit={handleSubmit}>
         <div className="row">
-
           <div className="col-sm-12 col-md-4 mb-3">
             <FormGroup>
               <Label for="theme">
@@ -247,7 +248,7 @@ const Settings = ({ isDarkMode, toggleDarkMode, setIsLoading, isLoading }) => {
           </div>
 
           <div className="col-sm-12 col-md-12 mb-3 pb-5">
-          {isLoading ? (
+            {isLoading ? (
               <button
                 type="submit"
                 className="btn"
@@ -257,7 +258,15 @@ const Settings = ({ isDarkMode, toggleDarkMode, setIsLoading, isLoading }) => {
                 Setting...
               </button>
             ) : (
-              <Button type="submit" color="btn" style={{ border: `${isDarkMode ? "1px solid white" : "1px solid black"}`, color: `${isDarkMode ? 'white' : 'black'}` }}
+              <Button
+                type="submit"
+                color="btn"
+                style={{
+                  border: `${
+                    isDarkMode ? "1px solid white" : "1px solid black"
+                  }`,
+                  color: `${isDarkMode ? "white" : "black"}`,
+                }}
               >
                 {t("settings.save")}
               </Button>
