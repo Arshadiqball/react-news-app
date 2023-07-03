@@ -82,6 +82,7 @@
 # How to the Run Project on Docker:
 
         1 - docker-compose up -d --build
+		The app will accessible at the: http://localhost:3000/
 
 # How to down the docker project:
 
