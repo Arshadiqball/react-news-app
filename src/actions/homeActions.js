@@ -278,7 +278,7 @@ export const fetchArticles = async (
 
         const response = await fetch(url)
         const data = await response.json()
-
+        
         const filteredArticles = data.response.docs.filter((article) => {
           if (Array.isArray(authors)) {
             return authors.some(

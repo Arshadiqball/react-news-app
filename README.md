@@ -64,6 +64,11 @@
         9 - Backend URL: REACT_APP_API_URL
         10 - Frontend URL: PUBLIC_URL
         11 - Application Mode: NODE_ENV
+
+# How to Switch APIS via ENV:
+        if you set the "nyt", the New york API will activate to works simultaneously works other one: 
+        1 - REACT_APP_API_SOURCE='nyt'
+        2 - REACT_APP_API_SOURCE='newsapi'
  
 ------------------------------------------------------------------------
 
@@ -82,7 +87,7 @@
 # How to the Run Project on Docker:
 
         1 - docker-compose up -d --build
-		The app will accessible at the: http://localhost:3000/
+        The app will accessible at the: http://localhost:3000/
 
 # How to down the docker project:
 
