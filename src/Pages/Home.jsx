@@ -212,7 +212,7 @@ const Home = ({ setIsLoading, isLoading, isDarkMode }) => {
                               <b>{article.title?.slice(0, 23)}</b>
                             </h4>
                             <a href={article.url} className="btn"
-                            style={{ border: `${isDarkMode ? "1px solid white" : "1px solid black"}`, color: `${isDarkMode ? 'white' : 'black'}` }}>
+                            style={{ border: "1px solid black", color: "black" }}>
                               Read More
                             </a>
                           </div>
@@ -244,7 +244,7 @@ const Home = ({ setIsLoading, isLoading, isDarkMode }) => {
                               <b>{article?.headline?.main?.slice(0, 23)}</b>
                             </h4>
                             <a href={article?.web_url} className="btn"
-                            style={{ border: `${isDarkMode ? "1px solid white" : "1px solid black"}`, color: `${isDarkMode ? 'white' : 'black'}` }}>
+                            style={{ border: "1px solid black", color: "black" }}>
                               Read More
                             </a>
                           </div>
