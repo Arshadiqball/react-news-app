@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState, useReducer } from "react"
+import React, { useRef, useState, useReducer } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { authReducer, signout } from "./../reducers/authReducer"
 import "./../Pages/Home.css"
+import { useTranslation } from "react-i18next"
 
 const Navbar = ({ isDarkMode }) => {
   const user = localStorage.getItem("accessToken")
@@ -12,6 +13,7 @@ const Navbar = ({ isDarkMode }) => {
   const [state, dispatch] = useReducer(authReducer, {})
   const [isExpanded, setIsExpanded] = useState(false)
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed)
@@ -37,23 +39,6 @@ const Navbar = ({ isDarkMode }) => {
       toast.error(error.message)
     }
   }
-
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (collapseRef.current && !collapseRef.current.contains(event.target)) {
-  //       const isMenuItem = event.target.closest(".menu-items")
-  //       if (!isMenuItem) {
-  //         setIsExpanded(false)
-  //       }
-  //     }
-  //   }
-
-  //   document.addEventListener("mousedown", handleClickOutside)
-
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside)
-  //   }
-  // }, [])
 
   return (
     <nav className="navbar navbar-expand-lg borderChange">
@@ -119,14 +104,14 @@ const Navbar = ({ isDarkMode }) => {
                       style={{ padding: "5px" }}
                       to="/settings"
                     >
-                      Settings
+                      {t("navbar.settings")}
                     </Link>
                     <Link
                       className="nav-link d-lg-none"
                       style={{ padding: "10px" }}
                       onClick={signoutHandler}
                     >
-                      Logout
+                      {t("navbar.logout")}
                     </Link>
                   </div>
                 </div>
@@ -135,14 +120,14 @@ const Navbar = ({ isDarkMode }) => {
           ) : (
             <div className="d-lg-none align-items-center">
               <Link className="nav-link" style={{ padding: "5px" }} to="/login">
-                Login
+                {t("navbar.login")}
               </Link>
               <Link
                 className="nav-link"
                 style={{ paddingBottom: "5px" }}
                 to="/register"
               >
-                Register
+                {t("navbar.register")}
               </Link>
             </div>
           )}
@@ -155,7 +140,7 @@ const Navbar = ({ isDarkMode }) => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                Latest News
+                {t("navbar.menu")}
               </Link>
             </li>
           </ul>

@@ -9,16 +9,19 @@
     "selectLanguage": "Seleccionar Idioma",
     "english": "English",
     "spanish": "Spanish",
-    "notification": "Notificación",
-    "enableNotifications": "Permitir Notificación",
     "save": "Ahorrar",
     "sources": "Fuentes preferidas",
     "authors": "Fuentes Autoras",
     "categories": "Fuentes Categorías",
     "selectAuthors": "Seleccionar Autores",
     "selectCategories": "Seleccionar Categorías",
-    "selectSources": "Seleccionar preferidas",
-    "selectApisource": "Seleccionar Fuente API de noticias",
-    "apisource": "API de noticias"
+    "selectSources": "Seleccionar preferidas"
+  },
+  "navbar": {
+    "menu": "Últimas noticias",
+    "register": "Registro",
+    "login": "Acceso",
+    "logout": "Cerrar sesión",
+    "settings": "Ajustes"
   }
 }

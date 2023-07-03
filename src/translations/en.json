@@ -16,5 +16,12 @@
     "selectAuthors": "Select Authors",
     "selectCategories": "Select Categories",
     "selectSources": "Select Sources"
+  },
+  "navbar": {
+    "menu": "Latest News",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout",
+    "settings": "Settings"
   }
 }
